@@ -21,7 +21,7 @@ import discountRoutes from './Routes/discountRoutes.js';
 
 dotenv.config();
 // import forgotPass from './Routes/forgotPassRouter.js';
-import { Server } from 'http';
+// import { Server } from 'http';
 import imageProfile from './Routes/imageProfile.js';
 connectDatabase();
 const app = express();
@@ -65,4 +65,4 @@ app.listen(1000, () => {
     console.log(`server run in port ${1000}`);
 });
 
-export default Server;
+// export default Server;
