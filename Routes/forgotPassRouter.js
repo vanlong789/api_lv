@@ -25,7 +25,7 @@ forgotPassRouter.post(
             user.resetPasswordToken = token;
             const save = await user.save();
             if (save) {
-                const url = `${process.env.URL_CLIENT}/updatePass/${email}`;
+                const url = `https://lvtn-balo-store.vercel.app/updatePass/${email}`;
                 const html = `
                  <div style = "margin-left: 22.5%; font-size: 17px">
                     <div style = "width: 514px;

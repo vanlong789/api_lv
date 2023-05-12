@@ -24,7 +24,7 @@ createUserRouter.post(
             expiresIn: '60m',
         });
         if (token) {
-            const url = `${process.env.URL_CLIENT}/verify/register/${email}/${token}`;
+            const url = `https://lvtn-balo-store.vercel.app/verify/register/${email}/${token}`;
             const html = `
         <div style = "margin-left : 23%" >
             <div style = "padding: 20px;

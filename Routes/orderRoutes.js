@@ -94,7 +94,7 @@ orderRouter.post(
             `${id}`,
             'Thanh toán điện tự với Balostore',
             `${money}`,
-            `${process.env.URL_CLIENT}/order/${id}`,
+            `https://lvtn-balo-store.vercel.app/order/${id}`,
             `https://7db9-2402-800-62a7-ac2a-1d57-8ed4-e12d-8628.ngrok-free.app/api/orders/${id}/notificationPay`,
         );
         const config = {
