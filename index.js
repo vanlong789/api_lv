@@ -35,26 +35,7 @@ app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: false }));
 // app.use('/public', express.static('public'));
 app.use(cors());
-
-app.use('/api/cart', cartRoutes);
-app.use('/api/slider', SliderRouter);
-app.use('/api/news', newsRouter);
-app.use('/api/import', ImportData);
-app.use('/api/products', productRoute);
-app.use('/api/users', userRouter);
 app.use('/api/orders', orderRouter);
-app.use('/api/ordersNv', orderNvRouter);
-app.use('/api/category', categoryRoute);
-// app.get('/api/config/paypal', (req, res) => {
-//     res.send(process.env.PAYPAL_CLIENT_ID);
-// });
-app.use('/api/uploadAvatar', Upload);
-app.use('/api/imageProfile', imageProfile);
-// app.use(express.static('public'));
-// forgot
-app.use('/api/forgotPass', forgotPassRouter);
-app.use('/api/verifiedEmail', createUserRouter);
-app.use('/api/discount', discountRoutes);
 // ERROR HANDLER
 app.use(notFound);
 app.use(errorHandler);
