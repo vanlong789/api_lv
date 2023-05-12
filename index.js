@@ -2,27 +2,9 @@ import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import connectDatabase from './config/MongoDb.js';
-import ImportData from './DataImport.js';
-import productRoute from './Routes/ProductRoutes.js';
 import { errorHandler, notFound } from './Middleware/Errors.js';
-import userRouter from './Routes/UserRoutes.js';
 import orderRouter from './Routes/orderRoutes.js';
-import SliderRouter from './Routes/SliderRouter.js';
-import cartRoutes from './Routes/cartRoutes.js';
-import categoryRoute from './Routes/categoryRouter.js';
-import multer from 'multer';
-import path from 'path';
-import Upload from './Routes/Upload.js';
-import newsRouter from './Routes/newsRouter.js';
-import forgotPassRouter from './Routes/forgotPassRouter.js';
-import createUserRouter from './Routes/createUserRouter.js';
-import orderNvRouter from './Routes/orderNvRouter.js';
-import discountRoutes from './Routes/discountRoutes.js';
-
 dotenv.config();
-// import forgotPass from './Routes/forgotPassRouter.js';
-// import { Server } from 'http';
-import imageProfile from './Routes/imageProfile.js';
 connectDatabase();
 const app = express();
 app.use(express.static('public'));
@@ -45,5 +27,3 @@ app.use(errorHandler);
 app.listen(1000, () => {
     console.log(`server run in port ${1000}`);
 });
-
-// export default Server;

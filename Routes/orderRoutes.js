@@ -1,18 +1,22 @@
 import express from 'express';
 import asyncHandler from 'express-async-handler';
-import { admin, protect } from '../Middleware/AuthMiddleware.js';
-import Product from '../Models/ProductModel.js';
 import Order from './../Models/OrderModel.js';
-import OrderNv from './../Models/OrderNvModel.js';
 import xlsx from 'xlsx';
 import createRequestBody from '../utils/payMomo.js';
 import axios from 'axios';
 
 const orderRouter = express.Router();
 
+orderRouter.get(
+    '/list',
+    asyncHandler(async (req, res) => {
+        res.status(200);
+        res.send('Logic của bạn đúng');
+    }),
+);
+
 orderRouter.post(
     '/:id/payMomo',
-    protect,
     asyncHandler(async (req, res) => {
         const id = req.params.id;
         const { money } = req.body;
