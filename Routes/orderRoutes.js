@@ -40,7 +40,7 @@ orderRouter.post(
             order.payment.signature = signature;
             order.payment.moneyPay = money;
 
-            order.save();
+            await order.save();
         }
         res.status(200).json(data);
     }),
@@ -50,23 +50,23 @@ orderRouter.post(
     '/:id/notificationPay',
     asyncHandler(async (req, res) => {
         const { message } = req.body;
-        const order = await Order.findById(req.params.id);
-        if (message == 'Successful.' || message == 'Thành công.') {
-            order.payment.timePay = new Date().getTime();
-            order.payment.partner = 'MOMO';
-            order.payment.message = 'Thành Công';
-            order.isPaid = true;
-            order.paidAt = new Date().getTime();
-            order.waitConfirmation = true;
-            order.waitConfirmationAt = new Date().getTime();
+        const order = await Order.findById(req.params.id).lean();
 
-            order.save();
-        } else {
-            order.cancel = 1;
-            order.payment.message = 'error';
+        res.send(order);
+        // if (message == 'Successful.' || message == 'Thành công.') {
+        //     order.payment.timePay = new Date().getTime();
+        //     order.payment.partner = 'MOMO';
+        //     order.payment.message = 'Thành Công';
+        //     order.isPaid = true;
+        //     order.paidAt = new Date().getTime();
 
-            order.save();
-        }
+        //     await order.save();
+        // } else {
+        //     order.cancel = 1;
+        //     order.payment.message = 'error';
+
+        //     await order.save();
+        // }
     }),
 );
 
