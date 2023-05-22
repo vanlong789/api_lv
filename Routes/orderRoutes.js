@@ -50,7 +50,7 @@ orderRouter.post(
     '/:id/notificationPay',
     asyncHandler(async (req, res) => {
         const { message } = req.body;
-        const order = await Order.findById(req.params.id).lean();
+        const order = await Order.findById(req.params.id);
 
         if (message == 'Successful.' || message == 'Thành công.') {
             order.payment.timePay = new Date().getTime();
@@ -60,11 +60,13 @@ orderRouter.post(
             order.paidAt = new Date().getTime();
 
             await order.save();
+            res.status(201).json(order);
         } else {
             order.cancel = 1;
             order.payment.message = 'error';
 
             await order.save();
+            res.status(201).json(order);
         }
     }),
 );
