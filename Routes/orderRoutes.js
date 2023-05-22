@@ -52,21 +52,20 @@ orderRouter.post(
         const { message } = req.body;
         const order = await Order.findById(req.params.id).lean();
 
-        res.send(order);
-        // if (message == 'Successful.' || message == 'Thành công.') {
-        //     order.payment.timePay = new Date().getTime();
-        //     order.payment.partner = 'MOMO';
-        //     order.payment.message = 'Thành Công';
-        //     order.isPaid = true;
-        //     order.paidAt = new Date().getTime();
+        if (message == 'Successful.' || message == 'Thành công.') {
+            order.payment.timePay = new Date().getTime();
+            order.payment.partner = 'MOMO';
+            order.payment.message = 'Thành Công';
+            order.isPaid = true;
+            order.paidAt = new Date().getTime();
 
-        //     await order.save();
-        // } else {
-        //     order.cancel = 1;
-        //     order.payment.message = 'error';
+            await order.save();
+        } else {
+            order.cancel = 1;
+            order.payment.message = 'error';
 
-        //     await order.save();
-        // }
+            await order.save();
+        }
     }),
 );
 
